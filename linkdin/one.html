@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Talent Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<style>
+   
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        .form-section, .info-section {
+            padding: 20px;
+        }
+        .form-section {
+            width: 50%;
+            background-color: #e0e0e0; /* Gray background */
+        }
+        .info-section {
+            width: 50%;
+            border-left: 1px solid #ddd;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #0073b1;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            
+        }
+        input[type="submit"]:hover {
+            background-color: #005983;
+        }
+        .info-section p {
+            margin: 0 0 20px;
+        }
+        .info-section .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .info-section .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: #f2c94c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .info-section .links a {
+            color: #0073b1;
+            text-decoration: none;
+        }
+        .info-section .links a:hover {
+            text-decoration: underline;
+        }
+        .illustration {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .illustration img {
+            max-width: 100%;
+        }
+
+
+        .testimonials-section {
+            background-color: #f8fcf8;
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .testimonial {
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+            margin: 0 2.5%;
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .testimonial img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
+
+        .testimonial h4 {
+            font-size: 16px;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .testimonial span {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .footer {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-links {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .footer-links a {
+            color: #555;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            margin: 0 5px;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+        }
+</style>
+<body style="margin: 0; font-family: Arial, sans-serif;">
+
+    <!-- Header Section with Logo -->
+    <div style="display: flex; align-items: center; padding: 10px 20px;">
+        <div style="font-size: 24px; color: #0073b1; font-weight: bold;">
+            <i class="fab fa-linkedin"></i> LinkedIn <span style="color: #333; font-weight: normal;">Talent Solutions</span>
+        </div>
+    </div>
+
+    <!-- Blue Banner Section -->
+    <div style="background-color: #0073b1; color: #ffffff; text-align: center; padding: 10px 0;">
+        Are you a current customer? Please <a href="#" style="color: #ffffff; font-weight: bold; text-decoration: underline;">click here</a> for help & support.
+    </div>
+
+    <!-- Main Content Section -->
+    <div style="background-color: #eaf5e1; text-align: center; padding: 60px 20px;">
+        <h1 style="font-size: 48px; color: #333; margin: 0;">Hire the right person, fast</h1>
+        <p style="font-size: 18px; color: #333; margin-top: 10px;">
+            Learn how LinkedIn Talent Solutions can help you find the right candidate in India.
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="container" style="margin-top: 1px;">
+            <div class="form-section">
+                <h2>Candidate Information Form</h2>
+                <form id="candidateForm">
+                    <input type="text" name="full_name" placeholder="Full Name*" required>
+                    <input type="email" name="email_address" placeholder="Email Address*" required>
+                    <input type="tel" name="phone_number" placeholder="Phone Number*" required>
+                    <input type="text" name="current_location" placeholder="Current Location" required>
+                    <input type="text" name="educational_qualifications" placeholder="Educational Qualifications" required>
+                    <input type="text" name="years_of_experience" placeholder="Years of Experience" required>
+                    <input type="text" name="skills_and_competencies" placeholder="Skills and Competencies" required>
+                    <input type="text" name="preferred_job_role_industry" placeholder="Preferred Job Role/Industry" required>
+                    <input type="text" name="expected_salary" placeholder="Expected Salary" required>
+                    <input type="text" name="availability_for_interviews" placeholder="Availability for Interviews" required>
+                    <input type="submit" id="submitBtn" value="Submit">
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Employer Requirements Form</h2>
+                <form id="employerForm">
+                    <input type="text" name="company_name" placeholder="Company Name*" required>
+                    <input type="text" name="contact_person" placeholder="Contact Person*" required>
+                    <input type="email" name="contact_email" placeholder="Contact Email*" required>
+                    <input type="tel" name="contact_phone" placeholder="Contact Phone Number*" required>
+                    <input type="text" name="job_title" placeholder="Job Title" required>
+                    <input type="text" name="job_description" placeholder="Job Description" required>
+                    <input type="text" name="required_skills_experience" placeholder="Required Skills and Experience" required>
+                    <input type="text" name="salary_range" placeholder="Salary Range" required>
+                    <input type="text" name="job_location" placeholder="Job Location" required>
+                </form>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <p>We will support you in finding, hiring, and retaining the right people for your business. It’s a long-lasting partnership and we look forward to getting started.</p>
+            <h2>Here's how to get started:</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <p>Submit this simple form.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <p>A dedicated talent consultant will get back to you shortly.*</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <p>We'll partner with you to talk through your business needs and see how LinkedIn can help.</p>
+            </div>
+            <small>*Forms submitted between 9:00 AM and 12:00 PM IST Monday-Friday will receive a response within 4 hours. Forms submitted after 12:00 PM IST may receive a response on the next business day (excluding weekends and holidays).</small>
+            <div class="links">
+                <p><a href="#">Already a customer? Click here for support</a></p>
+                <p><a href="#">Looking for a job? View jobs</a></p>
+                <p><a href="#">Chat live with sales</a></p>
+            </div>
+            <div class="illustration">
+                <img src="secondpage.svg" alt="Illustration of people talking">
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials-section">
+        <div class="testimonial">
+            <p>“LinkedIn has contributed immensely to scaling our hiring operations. We are optimistic of the value that we can deliver to our customers around the world with our global and diverse workforce.”</p>
+            <img src="ladki2.png" alt="Damayanti Ghosh">
+            <h4>Damayanti Ghosh</h4>
+            <span>Head of Talent Acquisition, Vymo</span>
+        </div>
+        <div class="testimonial">
+            <p>“LinkedIn Talent Solutions has helped us hire and develop talent that suit our vision in a seamless and effective way. As we continue to grow, building strength across the employee life-cycle will be key to sustaining our people success.”</p>
+            <img src="ladki.png" alt="Poorna Pushkala">
+            <h4>Poorna Pushkala</h4>
+            <span>Head of Human Resources, Samunnati</span>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#">About</a> |
+            <a href="#">Cookie Policy</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Your California Privacy Choices</a> |
+            <a href="#">User Agreement</a> |
+            <a href="#">Accessibility</a>
+        </div>
+        <div class="social-icons">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" style="font-size: 24px; color: #0073b1; margin: 0 5px;"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter" style="font-size: 24px; color: #1DA1F2; margin: 0 5px;"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook" style="font-size: 24px; color: #3b5998; margin: 0 5px;"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube" style="font-size: 24px; color: #FF0000; margin: 0 5px;"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" style="font-size: 24px; color: #C13584; margin: 0 5px;"></i></a>
+        </div>
+        
+        <p>© LinkedIn Corporation 2024</p>
+    </div>
+
+</body>
+<script>
+     
+     document.getElementById("candidateForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            window.location.href = "payment.html"; // URL of the new HTML page
+        });
+
+        document.getElementById("employerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            window.location.href = "payment.html"; // URL of the new HTML page
+        });
+</script>
+</html>

